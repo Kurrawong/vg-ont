@@ -1,4 +1,4 @@
-PREFIX olis: <https://olis.dev/>
+PREFIX vg: <https://pid.kurrawong.ai/vg/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
@@ -11,25 +11,24 @@ PREFIX skosxl: <http://www.w3.org/2008/05/skos-xl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 
-<https://olis.dev/ont>
+<https://pid.kurrawong.ai/vg>
     a owl:Ontology ;
     dcterms:provenance "This ontology was made in 2022 ky KurrawongAI for use in large graph management."@en ;
-    owl:versionIRI olis:0.0.1 ;
+    owl:versionIRI vg:0.0.1 ;
     owl:versionInfo "0.0.1" ;
-    skos:definition "This model defines data objects used by the Olis tool"@en ;
-    skos:prefLabel "Olis Virtual Graph Ontology"@en ;
-    sdo:codeRepository "https://github.com/Kurrawong/olis/"^^xsd:anyURI ;
+    skos:definition "This model defines types of RDF graphs that can be used to segment and then manage other graphs"@en ;
+    skos:prefLabel "Virtual Graph Ontology"@en ;
     sdo:copyrightHolder <https://orcid.org/0000-0002-8742-7730> ;
-    sdo:copyrightNotice "(c) Nicholas J. Car, 2022" ;
+    sdo:copyrightNotice "(c) KurrawongAI, 2023" ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:dateCreated "2022-07-01"^^xsd:date ;
     sdo:dateIssued "2022-07-01"^^xsd:date ;
     sdo:dateModified "2023-04-20"^^xsd:date ;
-    sdo:publisher <https://orcid.org/0000-0002-8742-7730> ;
+    sdo:publisher <https://kurrawong.ai> ;
     sdo:license
         <https://rdflicense.linkeddata.es/rdflicense/cc-by4.0> ,
         "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
-    sdo:codeRespository "https://github.com/Kurrawong/vg-ont"^^xsd:anyURI ;
+    sdo:codeRepository "https://github.com/Kurrawong/vg-ont"^^xsd:anyURI ;
 .
 
 <https://orcid.org/0000-0002-8742-7730>
@@ -45,51 +44,51 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sdo:url "https://kurrawong.ai"^^xsd:anyURI ;
 .
 
-olis:RealGraph
+vg:RealGraph
     a owl:Class ;
-    rdfs:isDefinedBy <https://olis.dev/ont> ;
+    rdfs:isDefinedBy <https://pid.kurrawong.ai/vg> ;
     skos:definition """An RDF Named Graph that may contain triples"""@en ;
     skos:prefLabel "Real Graph"@en ;
     skos:example """
-        PREFIX olis: <https://olis.dev/>
+        PREFIX vg: <https://pid.kurrawong.ai/vg/>
         PREFIX sdo: <https://schema.org>
 
         <http://example/graph/A>
-            a olis:RealGraph
+            a vg:RealGraph
             sdo:name "Real Graph A" ;
         .
     """ ;
 .
 
-olis:VirtualGraph
+vg:VirtualGraph
     a owl:Class ;
-    rdfs:isDefinedBy <https://olis.dev/ont> ;
+    rdfs:isDefinedBy <https://pid.kurrawong.ai/vg> ;
     skos:definition """A Graph that is an alias for other Graphs and may not contain triples"""@en ;
     skos:prefLabel "Virtual Graph"@en ;
     skos:example """
-        PREFIX olis: <https://olis.dev/>
+        PREFIX vg: <https://pid.kurrawong.ai/vg/>
         PREFIX sdo: <https://schema.org>
 
         <http://example/graph/X>
-            a olis:VirtualGraph
+            a vg:VirtualGraph
             sdo:name "Virtual Graph X" ;
         .
     """ ;
 .
 
-olis:isAliasFor
+vg:isAliasFor
     a owl:ObjectProperty ;
-    rdfs:isDefinedBy <https://olis.dev/ont> ;
-    rdfs:domain olis:VirtualGraph ;
-    rdfs:range olis:Graph ;
+    rdfs:isDefinedBy <https://pid.kurrawong.ai/vg> ;
+    rdfs:domain vg:VirtualGraph ;
+    rdfs:range vg:Graph ;
     skos:definition """A Virtual Graph is an alias for a Graph"""@en ;
     skos:prefLabel "is alias for"@en ;
     skos:example """
-        PREFIX olis: <https://olis.dev/>
+        PREFIX vg: <https://pid.kurrawong.ai/vg/>
 
         # Virtual Graph X is an alias for Real Graphs A & B
         <http://example/graph/X>
-            olis:isAliasFor
+            vg:isAliasFor
                  <http://example/graph/A> ,
                  <http://example/graph/B> ;
         .
@@ -101,15 +100,15 @@ sdo:name
 	rdfs:isDefinedBy <https://schema.org/> ;
 	skos:prefLabel "name" ;
 	skos:definition "The name of the item." ;
-	rdfs:domain olis:Graph ;
+	rdfs:domain vg:Graph ;
 	rdfs:range xsd:string ;
     skos:example """
-        PREFIX olis: <https://olis.dev/>
+        PREFIX vg: <https://pid.kurrawong.ai/vg/>
         PREFIX sdo: <https://schema.org>
 
         # "Virtual Graph X" is the name for <http://example/graph/X>
         <http://example/graph/X>
-            a olis:VirtualGraph ;
+            a vg:VirtualGraph ;
             sdo:name "Virtual Graph X" ;
         .
     """ ;
@@ -120,15 +119,15 @@ sdo:description
 	rdfs:isDefinedBy <https://schema.org/> ;
 	skos:prefLabel "description" ;
 	skos:definition "A description of the item." ;
-	rdfs:domain olis:Graph ;
+	rdfs:domain vg:Graph ;
 	rdfs:range xsd:string ;
     skos:example """
-        PREFIX olis: <https://olis.dev/>
+        PREFIX vg: <https://pid.kurrawong.ai/vg/>
         PREFIX sdo: <https://schema.org>
 
         # sdo:description is used to describe Virtual Graph <http://example/graph/X>
         <http://example/graph/X>
-            a olis:VirtualGraph ;
+            a vg:VirtualGraph ;
             sdo:name "Virtual Graph X" ;
             sdo:description "This Virtual Graph is an alias for all the Real Graphs for purpose N"
         .
