@@ -16,7 +16,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:provenance "This ontology was made in 2022 ky KurrawongAI for use in large graph management."@en ;
     owl:versionIRI vg:0.0.1 ;
     owl:versionInfo "0.0.1" ;
-    skos:definition "This model defines types of RDF graphs that can be used to segment and then manage other graphs"@en ;
+    skos:definition "This ontology, a data model, defines types of RDF graphs that can be used to segment and then manage other graphs"@en ;
     skos:prefLabel "Virtual Graph Ontology"@en ;
     sdo:copyrightHolder <https://orcid.org/0000-0002-8742-7730> ;
     sdo:copyrightNotice "(c) KurrawongAI, 2023" ;
